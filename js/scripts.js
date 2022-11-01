@@ -1,9 +1,14 @@
+function advertisement() {
+  window.alert("Do you need a new computer? Visit www.superextracomputersales.com to find the best deals!");
+  document.querySelector("form").removeEventListener("submit", advertisement);
+}
+
 window.addEventListener("load", function() {
   let form = document.querySelector("form");
   let resetBtn = document.querySelector("button#reset");
   let story = document.querySelector("div#story");
-  form.addEventListener("submit",function(event) {
-    // in this section we get the value for each form input
+
+  form.addEventListener("submit", function(event) {
     const person1Input = document.getElementById("person1Input").value;
     const person2Input = document.getElementById("person2Input").value;
     const animalInput= document.getElementById("animalInput").value;
@@ -11,7 +16,6 @@ window.addEventListener("load", function() {
     const verbInput = document.getElementById("verbInput").value;
     const nounInput = document.getElementById("nounInput").value;
 
-    // then we set the story variables to the values we got from the form
     document.querySelector("span#person1a").innerText = person1Input;
     document.querySelector("span#person1b").innerText = person1Input;
     document.querySelector("span#person1c").innerText = person1Input;
@@ -22,17 +26,16 @@ window.addEventListener("load", function() {
     document.querySelector("span#noun").innerText = nounInput;
     document.querySelector("span#exclamation").innerText = exclamationInput;
 
-    document.querySelector("div#story").removeAttribute("class");
     story.removeAttribute("class");
     event.preventDefault();
   });
-  form.addEventListener("submit",function() {
-    resetBtn.removeAttribute("class");
-  })
-  
+
   form.addEventListener("submit", function() {
-    window.alert("Do you need a new computer? Visit www.superextracomputersales.com to find the best deals!")
-  })
+    resetBtn.removeAttribute("class");
+  }); 
+
+  form.addEventListener("submit", advertisement); 
+
   resetBtn.addEventListener("click", function() {
     story.setAttribute("class", "hidden");
     document.getElementById("person1Input").value = null;
@@ -41,5 +44,5 @@ window.addEventListener("load", function() {
     document.getElementById("exclamationInput").value = null;
     document.getElementById("verbInput").value = null;
     document.getElementById("nounInput").value = null;
-  })
+  });
 });
